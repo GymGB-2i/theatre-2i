@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'degular': ['Degular', 'Epilogue', 'Inter', 'system-ui', 'sans-serif', 'sans'],
+    }
   },
   plugins: [],
 }

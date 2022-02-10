@@ -3,7 +3,16 @@ export default function Text({ variant, text }) {
         return (
             <
                 h1
-                className="text-3xl font-bold text-center text-gray-900 font-degular lowercase"
+                className="text-3xl font-bold text-center text-gray-900 lowercase font-degular"
+            >
+                {text}
+            </h1>
+        )
+    } if ( variant === 'nh1' ) {
+        return (
+            <
+                h1
+                className="text-3xl text-center text-gray-900 lowercase font-regular sm:font-bold font-degular"
             >
                 {text}
             </h1>
@@ -30,7 +39,7 @@ export default function Text({ variant, text }) {
         return (
             <
                 p
-                className="text-center text-white font-bold lowercase"
+                className="font-bold text-center text-white lowercase"
             >
                 {text}
             </p>

@@ -14,7 +14,7 @@ export default function Text({ variant, text, link }) {
         return (
             <
                 h1
-                className="text-3xl text-center text-gray-900 lowercase font-regular sm:font-bold font-display-sans"
+                className="text-2xl sm:text-3xl text-center text-gray-900 lowercase font-regular sm:font-bold font-display-sans"
             >
                 {text}
             </h1>
@@ -28,11 +28,29 @@ export default function Text({ variant, text, link }) {
                 {text}
             </h2>
         )
+    } if ( variant === 'wh2' ) {
+        return (
+            <
+                h2
+                className="text-2xl font-bold text-center text-white lowercase font-display-sans"
+            >
+                {text}
+            </h2>
+        )
     } if (variant === 'h3' ) {
         return (
             <
                 h3
                 className="text-xl font-bold text-center text-gray-900 lowercase font-display-sans"
+            >
+                {text}
+            </h3>
+        )
+    } if (variant === 'wh3' ) {
+        return (
+            <
+                h3
+                className="text-xl font-bold text-center text-white lowercase font-display-sans"
             >
                 {text}
             </h3>

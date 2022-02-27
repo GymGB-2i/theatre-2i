@@ -2,8 +2,11 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <link rel="stylesheet" href="https://use.typekit.net/zqd1glp.css"></link>,
+      <div>
+    <link rel="stylesheet" href="https://use.typekit.net/zqd1glp.css"/>
+    <link rel="manifest" href="../public/manifest.json" />
     <Component {...pageProps} />
+      </div>
   )
 }
 

@@ -50,19 +50,25 @@ const Home = ({ strapiData, error, headerData, footerData }) => {
     }
 }
 
-Home.getInitialProps = async ctx => {
+export async function getStaticProps() {
     try {
-      const qsQuery = await axios.get(`${process.env.STRAPI_ADDRESS}/api/imprint?populate=*`)
-      const headerRes = await axios.get(`${process.env.STRAPI_ADDRESS}/api/header?populate=*`)
-      const footerRes = await axios.get(`${process.env.STRAPI_ADDRESS}/api/footer?populate=*`)
+      const qsQuery = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/imprint?populate=*`)
+      const headerRes = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/header?populate=*`)
+      const footerRes = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/footer?populate=*`)
       let strapiData = qsQuery.data.data.attributes
       console.log(strapiData)
       let headerData = headerRes.data.data.attributes
       let footerData = footerRes.data.data.attributes
-      return { strapiData, headerData, footerData }
+      return {
+        props: {
+            strapiData, headerData, footerData
+        } }
     } catch ( error ) {
         console.log(error)
-      return { error }
+      return {
+        props: {
+            error
+        } }
     }
   }
   

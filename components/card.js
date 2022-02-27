@@ -21,8 +21,8 @@ export default function Card({ text, link, image, height, width, alt }) {
             div
             className='m-4 p-8 bg-white rounded-lg drop-shadow-md flex justify-center items-center flex-col w-64'
         >
-            <motion.circle className='h-32 w-32 bg-red-500 mb-5 rounded-full block'>
-                <img src={image} style={{}} className='rounded-full' alt={alt}></img>
+            <motion.circle className='h-32 w-32 mb-5 rounded-full block'>
+                <Image src={image} layout='responsive' width={400} height={400} className='rounded-full' alt={alt}/>
             </motion.circle>
             <Button text={text} link={link}/>
         </div>

@@ -7,7 +7,7 @@ export default function Footer( footerData ) {
             <nav className='flex flex-col sm:flex-row items-center justify-between h-44'>
             {
                 footerData.footerData.navigation.map(nav => (
-                    <div className='px-2'>
+                    <div className='px-2' key={nav.id}>
                         <Button text={nav.buttonText} link={nav.url} key={nav.id} variant={'dark'}/>
                     </div>
                 ))

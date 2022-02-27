@@ -66,11 +66,29 @@ export default function Text({ variant, text, link }) {
                 </Link>
             </p>
         )
+    } if ( variant === 'full text' ) {
+        return (
+            <
+                p
+                className="text-justify text-black font-medium"
+            >
+                {text}
+            </p>
+        )
+    } if ( variant === 'full center' ) {
+        return (
+            <
+                p
+                className="text-center text-black font-medium"
+            >
+                {text}
+            </p>
+        )
     } else {
         return (
             <
                 p
-                className="text-center text-gray-900 font-text-sans font-medium"
+                className="text-justify text-gray-900 font-text-sans font-medium"
             >
                 {text}
             </p>

@@ -8,10 +8,14 @@ const Header = ({ headerData }) => {
     return (
         <
             header
-      className = "flex flex-col items-center justify-between w-full px-4 py-6 bg-white sm:flex-row sm:justify-between h-1/6"
+      className = "flex flex-col items-center justify-between w-full px-4 py-6 bg-white sm:flex-row sm:justify-between h-1/6 sm:h-20 md:h-24 lg:h-28 static"
         >
             <div className="ml-3">
-                <Text text={headerData.title} variant={'h1'}/>
+                <Link href='/' passHref>
+                    <a>
+                        <Text text={headerData.title} variant={'h1'}/>
+                    </a>
+                </Link>
             </div>
             <nav className="flex flex-row w-full sm:w-2/4 mt-3 sm:mt-0 justify-center sm:justify-end gap-x-2">
                 {

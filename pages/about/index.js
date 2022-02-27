@@ -30,7 +30,7 @@ const About = ({footerData, headerData, strapiData}) => {
                 }
                 
             </section>
-            <div className='absolute top-0 left-0'>
+            <div className='fixed top-0 left-0'>
                     <AnimatePresence>
                         {
                             selectedId != null &&   

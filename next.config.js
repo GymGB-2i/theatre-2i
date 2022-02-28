@@ -14,6 +14,7 @@ module.exports = {
             fs: false,
             module: false,
             // process: require.resolve("process/browser"),
+            "process": require.resolve("process/browser")
         }
     }
 

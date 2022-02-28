@@ -5,15 +5,40 @@ import Text from '../components/text'
 import Footer from '../components/footer'
 import Head from 'next/head'
 import axios from 'axios'
+import { motion } from 'framer-motion'
 const qs = require('qs')
 
 const Home = ({ strapiData, error, headerData, footerData }) => {
  return (
     <div className='m-0 bg-white' lang='de'>
-      <Headd headData={strapiData.seo}/>
+      <Head>
+                <title>{strapiData.seo.metaTitle}</title>
+                <meta name="keywords" content={strapiData.seo.keywords}/>
+                <meta name="description" content={strapiData.seo.metaDescription}/>
+                <meta name="viewport" content={strapiData.seo.metaViewport}/>
+                <meta name="copyright" content={strapiData.seo.copyright}/>
+                <meta name="language" content={strapiData.seo.language}/>
+                <meta name="author" content={strapiData.seo.author}/>
+                <meta name="reply-to" content={strapiData.seo.replyTo}/>
+            </Head>
       <Header headerData={headerData}/>
-      <section>
-        <   video
+      <motion.div className='py-32' >
+        <motion.h1
+          className='text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center owercase font-display-sans mb-16 text-black'
+          animate={{ opacity: 1, color: ['#ff6161', '#9bff61', '#61ffb0', '#61fcff', '#61a0ff', '#7361ff', '#fa61ff'], gradientTransform: ['rotate(0deg)', 'rotate(360deg)'] }}
+          transition={{ duration: 4, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+        >
+          schneewittchen.
+        </motion.h1>
+        <motion.h1
+          className='text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center owercase font-display-sans mt-16'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          aber anders.
+        </motion.h1>
+        {/* <   video
             loop
             muted
             className="w-full"
@@ -21,13 +46,15 @@ const Home = ({ strapiData, error, headerData, footerData }) => {
             playsInline
         >
             <source src='video.mp4' type="video/mp4"/>
-        </video>
-      </section>
-      <section className='m-8 flex flex-col justify-evenly'>
+        </video> */}
+      </motion.div>
+      <section className='m-8 flex flex-col justify-evenly items-center'>
         <article className='mb-5'>
           <Text text={strapiData.title} variant={'h1'}/>
         </article>
-        <Text text={strapiData.description} variant={'full center'}/>
+        <article className='mb-5 max-w-256'>
+          <Text text={strapiData.description} variant={'full center'}/>
+        </article>
       </section>
       <article className='flex flex-col sm:flex-row justify-center items-center m-0 max-w-full'>
         {

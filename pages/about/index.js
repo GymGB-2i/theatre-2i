@@ -7,17 +7,33 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import AboutCard from "../../components/about_card";
 import Text from '../../components/text';
+import Head from 'next/head';
 
 const About = ({footerData, headerData, strapiData}) => {
     const [selectedId, setSelectedId] = useState(null)
 
     return (
         <div className='m-0 bg-white'>
+            <Head>
+                <title>{strapiData.seo.metaTitle}</title>
+                <meta name="keywords" content={strapiData.seo.keywords}/>
+                <meta name="description" content={strapiData.seo.metaDescription}/>
+                <meta name="viewport" content={strapiData.seo.metaViewport}/>
+                <meta name="copyright" content={strapiData.seo.copyright}/>
+                <meta name="language" content={strapiData.seo.language}/>
+                <meta name="author" content={strapiData.seo.author}/>
+                <meta name="reply-to" content={strapiData.seo.replyTo}/>
+            </Head>
             <Header headerData={headerData}/>
+                <Text text='Aufführungen des Theaters' variant='h3'/>
+            <section className='flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-16 mt-4 sm:mt-16'>
+                <Text text={strapiData.auffuehrung}/>
+                <Text text={strapiData.auffuehrung2}/>
+            </section>
             <section className={'relative grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 place-content-center gap-5 mx-5'}>
                 {
                     strapiData.person.map((person, index) => {
-                        console.log(person.altImage.data.attributes.formats.small.width)
+                        console.log(person.altImage.data.attributes)
                         return (
                             <motion.div
                                 layoutId={index}
@@ -30,6 +46,7 @@ const About = ({footerData, headerData, strapiData}) => {
                                     layout='responsive'
                                     width={person.normalImage.data.attributes.width}
                                     height={person.normalImage.data.attributes.height}
+                                    alt={person.normalImage.data.attributes.alternativeText}
                                 />
                                 <Text text={person.cardTitle} variant='h2'/>
                             </motion.div>
@@ -62,6 +79,7 @@ const About = ({footerData, headerData, strapiData}) => {
                                 <img
                                     src={process.env.NEXT_PUBLIC_STRAPI_ADDRESS + strapiData.person[selectedId].altImage.data.attributes.url}
                                     className='aspect-1/2 sm:w-96 md:w-128'
+                                    alt={strapiData.person[selectedId].altImage.data.attributes.alternativeText}
                                 />
                                 <Text text={strapiData.person[selectedId].cardTitle} variant='h2'/>
                                 <Text text={strapiData.person[selectedId].cardDescription} variant='full center'/>

@@ -1,4 +1,4 @@
-import Text from "./text";
+import Text from "./text.js";
 import Link from "next/link"
 // import { GetServerSideProps } from "next";
 import axios from 'axios'

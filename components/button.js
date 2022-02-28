@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Text from "./text";
+import Text from "./text.js";
 
 export default function Button({ variant, text, link, onClick }) {
     if ( variant === 'dark' ) {

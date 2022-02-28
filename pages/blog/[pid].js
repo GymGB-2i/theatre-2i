@@ -1,81 +1,42 @@
-import { useRouter } from 'next/router'
-import qs from "qs";
+const qs = require("qs");
 import axios from "axios";
 import Header from "../../components/header";
-import Footer from "../../components/footer";
-import {useState, useEffect} from "react";
+import Text from "../../components/text";
 
-const Post = async ({headerData, strapiData, footerData, blogData}) => {
-
-    const router = useRouter()
-    const {pid} = router.query
-
-    const blogQuery = qs.stringify({
-        filters: {
-            id: {
-                $eq: pid
-            }
-        }
-    })
-
-    const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetch(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/blog-entries?${blogQuery}`)
-            .then((res) => {
-                console.log(res);
-                res.json()
-            })
-            .then((data) => {
-                setData(data);
-                setIsLoading(false);
-                console.log(data)
-            })
-    }, [])
-
-    if (isLoading) return <p>Loading...</p>
-    if (!data) return <p>No data</p>
-
+function Blog({ strapiData, headerData, footerData }) {
     return (
-        <div>
-            <p>hi</p>
+        <div className="flex flex-col min-h-screen">
+            <Header headerData={headerData} />
+            {
+                strapiData.map((item, index) => {
+                    return (
+                        <div className="flex flex-col items-center justify-center w-full px-4 py-6 pb-8 bg-white sm:flex-row sm:justify-evenly h-1/6" key={index}>
+                            <Text text={item.attributes.title} variant={'h1'} />
+                            <article>
+                                {item.attributes.content}
+                            </article>
+                        </div>
+                    );
+                })
+            }
         </div>
     )
 }
 
-
 export async function getServerSideProps() {
     try {
         const query = qs.stringify({
-            populate: {
-                navigation: {
-                    populate: '*',
-                }, seo: {
-                    populate: '*',
-                }
-            }
+            populate: '*'
         })
-        const blogQuery = qs.stringify({
-            filters: {
-                id: {
-                    $eq: 4
-                }
-            }
-        })
-        const qsQuery = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/blog?${query}`)
+        const qsQuery = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/blog-entries?populate=*`)
         const headerRes = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/header?populate=*`)
         const footerRes = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/footer?populate=*`)
-        const blogRes = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ADDRESS}/api/blog-entries?${blogQuery}`)
-        let strapiData = qsQuery.data.data.attributes
+        let strapiData = qsQuery.data.data
         let headerData = headerRes.data.data.attributes
         let footerData = footerRes.data.data.attributes
-        let blogData = blogRes.data.data
         return {
             props: {
-                strapiData, headerData, footerData, blogData
+                strapiData, headerData, footerData
             }
         }
     } catch(error) {
@@ -86,4 +47,4 @@ export async function getServerSideProps() {
             }}}
 }
 
-export default Post
+export default Blog

@@ -3,7 +3,7 @@ import Footer from "../components/footer.js";
 import axios from "axios";
 import Head from "next/head";
 const qs = require('qs')
-import Text from "../components/Text.js";
+import Text from "../components/text.js";
 
 const Home = ({ strapiData, error, headerData, footerData }) => {
     if ( error ) {

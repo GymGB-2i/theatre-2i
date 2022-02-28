@@ -1,5 +1,5 @@
-import Text from "./text";
-import Button from "./button";
+import Text from "./text.js";
+import Button from "./button.js";
 
 export default function Footer( footerData ) {
     if (footerData.footerData) {return (

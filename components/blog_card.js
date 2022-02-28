@@ -1,5 +1,5 @@
 import Text from './text.js'
-import Button from './button'
+import Button from './button.js'
 import Image from 'next/image'
 
 const BlogCard = ({ teaser, title, link, image, iHeight, iWidth }) => {

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Button from './button'
+import Button from './button.js'
 import Image from 'next/image'
 
 export default function Card({ text, link, image, height, width, alt }) {

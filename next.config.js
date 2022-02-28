@@ -6,5 +6,18 @@ module.exports = {
   i18n: {
     locales: ['de'],
     defaultLocale: 'de',
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+        // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
+        config.resolve.fallback = {
+            fs: false,
+            module: false,
+            // process: require.resolve("process/browser"),
+            "process": require.resolve("process/browser")
+        }
+    }
+
+    return config;
   }
 }

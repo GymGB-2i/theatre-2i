@@ -70,7 +70,7 @@ export default function Text({ variant, text, link }) {
         return (
             <
                 p
-                className="text-justify text-black font-medium"
+                className="text-justify text-black font-medium break-words"
             >
                 {text}
             </p>
@@ -79,7 +79,7 @@ export default function Text({ variant, text, link }) {
         return (
             <
                 p
-                className="text-center text-black font-medium"
+                className="text-center text-black font-medium break-words"
             >
                 {text}
             </p>
@@ -88,7 +88,7 @@ export default function Text({ variant, text, link }) {
         return (
             <
                 p
-                className="text-justify text-gray-900 font-text-sans font-medium"
+                className="text-justify text-gray-900 font-text-sans font-medium break-words"
             >
                 {text}
             </p>

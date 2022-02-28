@@ -15,6 +15,7 @@ module.exports = {
             module: false,
             // process: require.resolve("process/browser"),
             "process": require.resolve("process/browser")
+            extensions: ['', '.js', '.jsx']
         }
     }
 

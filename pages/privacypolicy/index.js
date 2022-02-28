@@ -1,7 +1,7 @@
 import axios from "axios";
 import Header from "../../components/header.js";
 import Footer from "../../components/footer.js";
-import Text from "../../components/Text.js";
+import Text from "../../components/text.js";
 
 export default function PrivacyPolicy({ headerData, footerData }) {
     return (

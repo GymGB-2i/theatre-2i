@@ -1,12 +1,12 @@
 import {AnimatePresence, motion, AnimateSharedLayout} from 'framer-motion'
-import Header from '../../components/Header.js';
-import Footer from '../../components/Footer.js';
+import Header from '../../components/header.js';
+import Footer from '../../components/footer.js';
 import Image from 'next/image'
 import qs from "qs";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import AboutCard from "../../components/about_card.js";
-import Text from '../../components/Text.js';
+import Text from '../../components/text.js';
 import Head from 'next/head';
 
 const About = ({footerData, headerData, strapiData}) => {

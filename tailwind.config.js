@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       aspectRatio: {
-        "1/2": "2 / 3",
+        "1/2": "3 / 2",
       },
       width: {
         "128": "32rem",
@@ -14,6 +14,16 @@ module.exports = {
       },
       maxWidth: {
         "128": "32rem",
+        "256": "64rem",
+      },
+      maxHeight: {
+        "128": "32rem",
+        "320": "50rem",
+        "256": "64rem",
+      },
+      height: {
+        "128": "32rem",
+        "320": "50rem",
         "256": "64rem",
       }
     },

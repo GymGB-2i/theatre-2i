@@ -74,13 +74,18 @@ const About = ({footerData, headerData, strapiData}) => {
                                 transition={{ duration: 0.25, ease: 'easeInOut' }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => console.log(selectedId)}
-                                className=' bg-white rounded-lg py-6 px-6 shadow-md flex flex-col justify-end max-w-128'
+                                className=' bg-white rounded-lg py-6 px-6 shadow-md flex flex-col justify-between items-center gap-0 max-h-320'
                             >
-                                <img
+                                <div className='m-0 aspect-[2/3]'>    
+                                <Image
                                     src={process.env.NEXT_PUBLIC_STRAPI_ADDRESS + strapiData.person[selectedId].altImage.data.attributes.url}
-                                    className='aspect-1/2 sm:w-96 md:w-128'
+                                    className='aspect-[2/3]'
                                     alt={strapiData.person[selectedId].altImage.data.attributes.alternativeText}
+                                    layout='intrinsic'
+                                    height={600}
+                                    width={400}
                                 />
+                                </div>
                                 <Text text={strapiData.person[selectedId].cardTitle} variant='h2'/>
                                 <Text text={strapiData.person[selectedId].cardDescription} variant='full center'/>
                             </motion.div>
